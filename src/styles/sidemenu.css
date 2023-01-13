@@ -1,0 +1,8 @@
+.side {
+  background-color: pink;
+}
+
+.side ul {
+  list-style: none;
+  padding: 10px;
+}
