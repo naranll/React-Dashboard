@@ -1,0 +1,42 @@
+.modal-header {
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.08);
+  border-radius: 0px;
+  display: flex;
+  align-items: center;
+  gap: 250px;
+  padding: 16px 0;
+}
+
+
+.modal-body {
+  padding: 2px 16px;
+}
+
+.modal-footer {
+  padding: 2px 16px;
+  background-color: #5cb85c;
+  color: white;
+}
+
+.modal-content {
+  position:absolute;
+  right: 0;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  border: 1px solid #888;
+  width: 80%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  animation-name: animatetop;
+  animation-duration: 0.4s;
+}
+
+.modal-container{
+  width: 100%;
+  position: relative;
+}
+
+@keyframes animatetop {
+  from {right: -300px; opacity: 0}
+  to {top: 300px; opacity: 1}
+}

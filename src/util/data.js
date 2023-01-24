@@ -83,7 +83,10 @@ export const productsData = [
     },
     {
         description: "",
-        spec: "[{capacity: “0.8 cubic feet”},{color:”Brushed Stainless Steel”}]",
+        spec: [
+            {capacity: "0.8 cubic feet"},
+            {color: "Brushed Stainless Steel"},
+        ],
         name: "Air fryer",
         id: "e6518a42",
         image: "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6412/6412355_sd.jpg;maxHeight=400;maxWidth=600",
