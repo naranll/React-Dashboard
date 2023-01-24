@@ -1,17 +1,15 @@
 export const MENUS = [
     { name: "Home", url: "/" },
-
 ]
 
 export const users = [
     {
         username: "asdf",
         password: "asdf",
-        userType: "user",
     }
 ]
 
-export const products = [
+export const productsData = [
     {
         description: "Customize a Samsung Bespoke 3- or 4-door French door refrigerator or 4-Door Flex refrigerator with panels available in multiple colors and finishes. Plus, shop for matching appliances.",
         spec: [
@@ -106,7 +104,7 @@ export const products = [
         id: "",
         image: "https://i02.appmifile.com/84_operator_sg/13/09/2022/972447360327e0954a43fb47c2b84e68.png?f=webp",
         price: 439,
-        stock: 247,
+        stock: 24,
         sale: 20,
         category: "pad"
     },
@@ -134,7 +132,7 @@ export const products = [
         image: "https://www.xiaomihome.global/wp-content/uploads/2022/11/xiaomi-book-air-13-2022-cover-1.webp",
         price: 1200,
         stock: 10,
-        sale: 247,
+        sale: 24,
         category: "laptop"
     },
 

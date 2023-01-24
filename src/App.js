@@ -1,17 +1,21 @@
 import Header from "./components/Header";
 import SideMenu from "./components/SideMenu";
-import Home from "./components/Home";
+import Products from "./components/Products";
 import { Routes, Route } from "react-router-dom";
-import "./styles/mainPage.css";
+import { useState } from "react";
+import { productsData } from "./util/data";
+import "./styles/main.css";
 
 function App() {
+  const [products, setProducts] = useState(productsData);
+
   return (
     <div className="App">
       <Header />
-      <div className="mainPage">
+      <div className="main">
         <SideMenu />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Products products={products} />} />
         </Routes>
       </div>
     </div>
