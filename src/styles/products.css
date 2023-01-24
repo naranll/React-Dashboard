@@ -1,0 +1,22 @@
+.productsMonitor {
+  display: flex;
+  background-color: rgb(245, 245, 245);
+}
+
+table {
+  width: 800px;
+  min-height: 100vh;
+}
+
+thead {
+  text-align: left;
+}
+
+tbody tr {
+  border: 1px solid black;
+}
+
+td,
+th {
+  width: 80px;
+}
