@@ -17,8 +17,8 @@ function App() {
       <div className="main">
         <SideMenu />
         <Routes>
-          <Route path="/" element={<Products products={products} selected={setSelectedProduct}/>} />
-          <Route path="/product/:id" element={<Product product={selectedProduct}/>} />
+          <Route path="/" element={<Products products={products} setselected={setSelectedProduct} selected={selectedProduct} />} />
+          {/* <Route path="/product/:id" element={<Product product={selectedProduct} />} /> */}
         </Routes>
       </div>
     </div>

@@ -1,11 +1,12 @@
 import "../styles/products.css";
 import Product from "../components/Product";
 import { useNavigate } from "react-router-dom";
-import {Routes, Route} from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 export default function Products(prop) {
-    const { products, selected } = prop;
-    const navigate = useNavigate();
+    const { products, setselected, selected } = prop;
+    // const navigate = useNavigate();
+
     return <div className="productsMonitor">
         <div>
             <select>
@@ -36,17 +37,16 @@ export default function Products(prop) {
                         <td>{product.category}</td>
                         <td>
                             <button className="more" onClick={() => {
-                                selected(product);
-                                navigate(`/product/${product.id}`);
+                                setselected(product);
+                                // navigate(`/product/${product.id}`);
+                                <Product product={selected} />
                             }}>...</button>
                         </td>
                     </tr>
                 })}
             </tbody>
-            {/* <Routes>
-                <Route path="/product/:id" element={<Product product={selectedProduct}/>}/>
-            </Routes> */}
 
         </table>
+        <Product product={selected} />
     </div >
 }
