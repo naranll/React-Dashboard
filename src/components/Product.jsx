@@ -1,34 +1,40 @@
 import { useParams, useNavigate } from "react-router-dom";
+import { useState, useRef } from "react";
 import "../styles/product.css";
 
 export default function Product(prop) {
-    const { id } = useParams();
+    // const { id } = useParams();
     const navigate = useNavigate();
     const { product } = prop;
-    // console.log("selected product at product.jsx:", product);
+    const inputRef = useRef();
+
+    const [current, setCurrent] = useState(product);
+
+
 
     return <div className="modal-container">
-        {product.id === id ? (<div className="modal-content">
+        {product.id ? (<div className="modal-content">
             <div className="modal-header">
-                <span className="close" onClick={()=> navigate(-1)}>&times;</span>
+                <span className="close" onClick={() => navigate(-1)}>&times;</span>
                 <h2>{product.name}</h2>
             </div>
             <div className="modal-body">
                 <div><img alt={product.name} /></div>
                 <form>
                     <div>
-                        <h4>Name</h4>
-                        {/* <input type="text" value={product.name} name="productName" /> */}
+                        <label>Name</label>
+                        <input type="text" name="productName" defaultValue={"input"} ref={inputRef} />
+
                         <p> {product.name}</p>
-                        <h4>Price</h4>
+                        <label>Price</label>
                         {/* <input type="text" value={product.price} name="productPrice" /> */}
                         <p> {product.price}</p>
                     </div>
                     <div>
-                        <h4>Stock</h4>
+                        <label>Stock</label>
                         {/* <input type="text" value={product.stock} name="productStock" /> */}
                         <p> {product.stock}</p>
-                        <h4>Price</h4>
+                        <label>Price</label>
                         {/* <input type="text" value={product.sale} name="productSale" /> */}
                         <p>{product.price}</p>
                     </div>
@@ -38,7 +44,7 @@ export default function Product(prop) {
                                 // console.log("spec name:",prop);
                                 // console.log("spec value:",specObject[prop]);
                                 return <div key={i}>
-                                    <h4>{prop}</h4>
+                                    <label>{prop}</label>
                                     <p>{specObject[prop]}</p>
                                 </div>
                             }
@@ -57,8 +63,7 @@ export default function Product(prop) {
                     <button type="submit">Save changes</button>
                 </form>
             </div>
-        </div>) : <h1>error</h1>}
-
+        </div>) : ""}
 
     </div>
 }
