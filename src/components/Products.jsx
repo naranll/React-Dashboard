@@ -1,14 +1,18 @@
 import "../styles/products.css";
-import Product from "../components/Product";
+import Edit from "./Edit";
+import RowProduct from "./RowProduct";
+import Dots from "../svg/Dots";
 import { useNavigate } from "react-router-dom";
 import { Routes, Route } from "react-router-dom";
+import { useState } from "react";
 
 export default function Products(prop) {
-    const { products, setselected, selected } = prop;
+    const { products } = prop;
+    const [selectedProduct, setSelectedProduct] = useState('');
     // const navigate = useNavigate();
 
-    return <div className="productsMonitor">
-        <div>
+    return <div className="products-table">
+        <div className="filter">
             <select>
                 <option>All</option>
                 <option>Appliances</option>
@@ -19,34 +23,22 @@ export default function Products(prop) {
         <table>
             <thead>
                 <tr>
+                    <th>image</th>
                     <th>name</th>
                     <th>price</th>
                     <th>stock</th>
                     <th>sale</th>
                     <th>Category</th>
-                    <th>...</th>
+                    <th><Dots /></th>
                 </tr>
             </thead>
             <tbody>
-                {products.map((product, i) => {
-                    return <tr key={i}>
-                        <td>{product.name}</td>
-                        <td>${product.price}</td>
-                        <td>{product.stock}</td>
-                        <td>{product.sale}%</td>
-                        <td>{product.category}</td>
-                        <td>
-                            <button className="more" onClick={() => {
-                                setselected(product);
-                                // navigate(`/product/${product.id}`);
-                                <Product product={selected} />
-                            }}>...</button>
-                        </td>
-                    </tr>
+                {[...products].map((product, i) => {
+                    return <RowProduct product={product} key={i} select={setSelectedProduct} />
                 })}
             </tbody>
 
         </table>
-        <Product product={selected} />
+        <Edit product={selectedProduct} />
     </div >
 }

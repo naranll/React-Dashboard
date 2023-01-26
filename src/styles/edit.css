@@ -3,10 +3,9 @@
   border-radius: 0px;
   display: flex;
   align-items: center;
-  gap: 250px;
+  gap: 25px;
   padding: 16px 0;
 }
-
 
 .modal-body {
   padding: 2px 16px;
@@ -19,7 +18,8 @@
 }
 
 .modal-content {
-  position:absolute;
+  position: absolute;
+  top: 0;
   right: 0;
   background-color: #fefefe;
   margin: auto;
@@ -31,12 +31,19 @@
   animation-duration: 0.4s;
 }
 
-.modal-container{
+.modal-container {
   width: 100%;
-  position: relative;
+  position: absolute;
 }
 
 @keyframes animatetop {
-  from {right: -300px; opacity: 0}
-  to {top: 300px; opacity: 1}
+  from {
+    right: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    /* right: 10px; */
+    opacity: 1;
+  }
 }

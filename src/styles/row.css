@@ -1,0 +1,35 @@
+.product-row {
+  display: flex;
+  border-bottom: 1px solid #eaeaea !important;
+}
+
+td {
+  background-color: #fff;
+  padding: 0px 25px;
+  width: 150px;
+  border: 1px solid #eaeaea;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.product-image img {
+  height: 65px;
+  width: 65px;
+  object-fit: scale-down;
+}
+
+.category {
+  margin: 0;
+  width: 110px;
+  color: #fff;
+  background-color: #003585;
+  border-radius: 5px;
+  padding: 5px;
+  text-align: center;
+}
+
+.more {
+  background-color: white;
+  border: none;
+}
