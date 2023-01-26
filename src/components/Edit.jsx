@@ -1,15 +1,14 @@
-import { useParams, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useState, useRef } from "react";
-import "../styles/product.css";
+import "../styles/edit.css";
 
 export default function Product(prop) {
-    // const { id } = useParams();
     const navigate = useNavigate();
     const { product } = prop;
     const inputRef = useRef();
 
     const [current, setCurrent] = useState(product);
-
+    // console.log("type of current", typeof current);
 
 
     return <div className="modal-container">
@@ -23,20 +22,19 @@ export default function Product(prop) {
                 <form>
                     <div>
                         <label>Name</label>
-                        <input type="text" name="productName" defaultValue={"input"} ref={inputRef} />
+                        <input type="text" name="productName" defaultValue={product.name} ref={inputRef} />
 
-                        <p> {product.name}</p>
                         <label>Price</label>
-                        {/* <input type="text" value={product.price} name="productPrice" /> */}
-                        <p> {product.price}</p>
+                        <input type="text" name="productPrice" defaultValue={product.price} ref={inputRef} />
+
                     </div>
                     <div>
                         <label>Stock</label>
-                        {/* <input type="text" value={product.stock} name="productStock" /> */}
-                        <p> {product.stock}</p>
-                        <label>Price</label>
-                        {/* <input type="text" value={product.sale} name="productSale" /> */}
-                        <p>{product.price}</p>
+                        <input type="text" name="productStock" defaultValue={product.stock} ref={inputRef} />
+
+                        <label>Sale</label>
+                        <input type="text" name="productSale" defaultValue={product.sale} ref={inputRef} />
+
                     </div>
                     <div> <h3>Specs</h3>
                         {product.spec.map((specObject, i) => {

@@ -1,24 +1,36 @@
 import Header from "./components/Header";
 import SideMenu from "./components/SideMenu";
 import Products from "./components/Products";
-import Product from "./components/Product";
+import Monitor from "./components/Monitor";
 import { Routes, Route } from "react-router-dom";
-import { useState } from "react";
-import { productsData } from "./util/data";
-import "./styles/main.css";
+import { useState, useEffect } from "react";
+import "./styles/app.css";
+// import { productsData } from "./util/data";
+import axios from "axios";
+
+
 
 function App() {
-  const [products, setProducts] = useState(productsData);
-  const [selectedProduct, setSelectedProduct] = useState('');
+  const [products, setProducts] = useState('');
+  const [page, setPage] = useState('monitor');
+
+  useEffect(() => {
+    axios.get("http://localhost:2020/products")
+      .then(response => {
+        setProducts(response.data);
+      })
+      .catch(() => console.log("error fetching"))
+  }, [])
 
   return (
     <div className="App">
       <Header />
       <div className="main">
-        <SideMenu />
+        <SideMenu setPage={setPage} page={page} />
         <Routes>
-          <Route path="/" element={<Products products={products} setselected={setSelectedProduct} selected={selectedProduct} />} />
-          {/* <Route path="/product/:id" element={<Product product={selectedProduct} />} /> */}
+          <Route path="/" element={<Monitor />} />
+          <Route path="/products" element={<Products products={products} setPage={setPage} page={page} />} />
+          {/* <Route path="/" element={<Products products={products} setselected={setSelectedProduct} selected={selectedProduct} />} /> */}
         </Routes>
       </div>
     </div>
