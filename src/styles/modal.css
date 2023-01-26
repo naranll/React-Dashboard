@@ -4,16 +4,15 @@
   display: flex;
   align-items: center;
   gap: 25px;
-  padding: 16px 0;
+  padding: 16px;
 }
 
 .modal-body {
-  padding: 2px 16px;
+  padding: 50px 100px;
 }
 
 .modal-footer {
   padding: 2px 16px;
-  background-color: #5cb85c;
   color: white;
 }
 
@@ -25,7 +24,7 @@
   margin: auto;
   padding: 0;
   border: 1px solid #888;
-  width: 80%;
+  width: 890px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   animation-name: animatetop;
   animation-duration: 0.4s;
@@ -46,4 +45,50 @@
     /* right: 10px; */
     opacity: 1;
   }
+}
+
+.close{
+  width: 50px;
+}
+
+.modal-img-container{
+  height: 200px;
+  width: 700px;
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  border: 1px solid #E7E4E4;
+  border-radius: 5px;
+}
+.modal-img-container img{
+  height: 100px;
+  object-fit: scale-down;
+  border:1px solid #888;
+}
+
+.modal-container form{
+  /* display: flex; */
+  flex-direction: column;
+}
+
+.modal-rows{
+  display: flex;
+  width: 714px;
+  gap: 20px;
+}
+
+.modal-container label{
+  width: 340px;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-container input{
+  width: 340px;
+  height: 42px;
+}
+
+
+h4{
+  margin: 10px;
 }

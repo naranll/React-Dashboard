@@ -1,10 +1,10 @@
 // import Edit from "./Edit";
-import "../styles/row.css";
-import "../styles/dropdown.css";
-import Dots from "../svg/Dots";
+import "../../styles/row.css";
+import "../../styles/dropdown.css";
+import Dots from "../../svg/Dots";
 
 export default function RowProduct(prop) {
-    const { product, select } = prop;
+    const { product, selected, action } = prop;
 
     return <tr className="product-row">
         <td className="product-image"> <img src={product.image} /></td>
@@ -14,16 +14,18 @@ export default function RowProduct(prop) {
         <td>{product.sale}%</td>
         <td><p className="category">{product.category}</p></td>
         <td>
-
             <div className="dropdown">
-                {/* <button class="dropbtn">Dropdown</button> */}
                 <button className="more dropbtn" ><Dots /></button>
                 <div className="dropdown-content">
                     <a onClick={() => {
-                        select(product);
+                        selected(product);
+                        action(2);
                     }}>Edit</a>
-                    <a href="#">Link 2</a>
-                    <a href="#">Link 3</a>
+
+                    <a onClick={()=>{
+                        selected(product);
+                        action(3);
+                    }}>Delete</a>
                 </div>
             </div>
         </td>

@@ -1,4 +1,4 @@
-.products-table {
+.products-page {
   display: flex;
   flex-direction: column;
   background-color: #f5f5f5;
@@ -6,7 +6,7 @@
   position: relative;
 }
 
-.filter {
+.products-header {
   height: 65px;
 }
 
