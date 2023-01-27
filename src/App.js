@@ -7,17 +7,16 @@ import data from "./util/data";
 import { Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import Add from "./components/sub/Add";
-import Edit from "./components/sub/Edit";
+// import Add from "./components/sub/Add";
+import Modal from "./components/sub/Modal";
 import Delete from "./components/sub/Delete";
 
 function App() {
   const [products, setProducts] = useState('');
   const [page, setPage] = useState('monitor');
   const [selectedProduct, setSelectedProduct] = useState('');
-  const [newProduct, setNewProduct] =useState(0);
-  const [productAction, setProductAction] = useState(0);
-  // productAction : 1 == add; 2 == edit; 3 == delete;
+  const [newProduct, setNewProduct] = useState(0);
+  const [productAction, setProductAction] = useState('');
 
   useEffect(() => {
     axios.get("http://localhost:2020/products")
@@ -27,7 +26,6 @@ function App() {
       .catch(() => console.log("error fetching"))
   }, [])
 
-
   return (
     <div className="App">
       <Header />
@@ -35,28 +33,50 @@ function App() {
         <SideMenu setPage={setPage} page={page} />
         <Routes>
           <Route path="/" element={<Monitor />} />
-          <Route path="/products" element={<Products products={products} setPage={setPage} page={page} selected={setSelectedProduct} newProduct={setNewProduct} action={setProductAction}/>} />
+          <Route path="/products" element={<Products products={products} selected={setSelectedProduct} newProduct={setNewProduct} setAction={setProductAction} />} />
+          {/* <Route path="/products" element={<Products page={page} products={products}
+            setFunctions={
+              {
+                setPage: { setPage },
+                selected: { setSelectedProduct },
+                newProduct: { setNewProduct },
+                action: { setProductAction }
+              }}
+          />}
+          /> */}
         </Routes>
-        {/* <Edit product={selectedProduct}/> */}
-        {/* {newProduct !== 0 ? <Add /> : ''} */}
-        {/* <Delete product={selectedProduct}/> */}
 
+        {/* {productAction !== 0 ? <Modal product={selectedProduct} action={productAction} /> : ''} */}
 
-      {(() => {
-        switch (productAction) {
-          case 1:
-            return <Add />
-          case 2: 
-            return <Edit product={selectedProduct}/>
-          case 3:
-            return <Delete product={selectedProduct} />
-          default:
-            return null
+        {/* {(() => {
+          switch (productAction) {
+            case 1:
+              return <Add />
+            case 2:
+              return <Edit product={selectedProduct} />
+            case 3:
+              return <Delete product={selectedProduct} />
+            default:
+              return null
+          }
+        })()} */}
+
+        {
+          (() => {
+            switch (productAction) {
+              case 'add':
+                return <Modal action="add" setAction={setProductAction} />
+              case 'edit':
+                return <Modal product={selectedProduct} action="edit" setAction={setProductAction} />
+              case 'delete':
+                return <Delete product={selectedProduct} setAction={setProductAction} />
+              default:
+                return null
+            }
+          })()
         }
-      })()}
-
       </div>
-    </div>
+    </div >
   );
 }
 

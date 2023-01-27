@@ -6,12 +6,6 @@ export default function Add(prop) {
     const navigate = useNavigate();
     const { setNew } = prop;
 
-    function getInput(input) {
-        console.log("form submit");
-        console.log("name:", input.target.newName.value);
-        setNew(input);
-    }
-
     return <div className="modal-container">
         <div className="modal-content">
             <div className="modal-header">

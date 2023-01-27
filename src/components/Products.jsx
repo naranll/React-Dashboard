@@ -1,15 +1,16 @@
 import "../styles/products.css";
-import Edit from "./sub/Edit";
+import Modal from "./sub/Modal";
 import Add from "./sub/Add";
 import RowProduct from "./sub/Row";
 import Dots from "../svg/Dots";
-import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 export default function Products(prop) {
-    const { products, page, setPage, selected, newProduct, action } = prop;
-    // const [newProduct, setNewProduct] = useState();
+    const { products, selected, newProduct, setAction } = prop;
     // console.log(newProduct);
+
+    // const { setFunctions, products, page } = prop;
+    // console.log("my functions:", setFunctions)
 
     return <div className="products-page">
         <div className="products-header">
@@ -22,7 +23,9 @@ export default function Products(prop) {
             <button className="add-product" onClick={() => {
                 console.log("add new product");
                 newProduct(1);
-                action(1);
+                setAction('add');
+                // setFunctions.newProduct.setNewProduct(1);
+                // setFunctions.action.setProductAction(1);
             }}>+ Add New</button>
         </div>
         <table>
@@ -38,9 +41,13 @@ export default function Products(prop) {
                 </tr>
             </thead>
             <tbody>
+                {/* {[...products].map((product, i) => {
+                    return <RowProduct product={product} key={i} selected={setFunctions.selected.setSelectedProduct} action={setFunctions.action.setProductAction} />
+                })} */}
                 {[...products].map((product, i) => {
-                    return <RowProduct product={product} key={i} selected={selected} action={action}/>
+                    return <RowProduct product={product} key={i} selected={selected} action={setAction} />
                 })}
+
             </tbody>
 
         </table>
