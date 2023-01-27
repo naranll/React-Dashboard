@@ -19,12 +19,12 @@ export default function RowProduct(prop) {
                 <div className="dropdown-content">
                     <a onClick={() => {
                         selected(product);
-                        action(2);
+                        action('edit');
                     }}>Edit</a>
 
-                    <a onClick={()=>{
+                    <a onClick={() => {
                         selected(product);
-                        action(3);
+                        action('delete');
                     }}>Delete</a>
                 </div>
             </div>
