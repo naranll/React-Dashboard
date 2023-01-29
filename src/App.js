@@ -14,9 +14,9 @@ import Delete from "./components/sub/Delete";
 function App() {
   const [products, setProducts] = useState('');
   const [page, setPage] = useState('monitor');
-  const [selectedProduct, setSelectedProduct] = useState('');
+  const [selectedProduct, setSelectedProduct] = useState();
   const [newProduct, setNewProduct] = useState(0);
-  const [productAction, setProductAction] = useState('');
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     axios.get("http://localhost:2020/products")
@@ -33,7 +33,7 @@ function App() {
         <SideMenu setPage={setPage} page={page} />
         <Routes>
           <Route path="/" element={<Monitor />} />
-          <Route path="/products" element={<Products products={products} selected={setSelectedProduct} newProduct={setNewProduct} setAction={setProductAction} />} />
+          <Route path="/products" element={<Products products={products} setSelect={setSelectedProduct} newProduct={setNewProduct} setShowModal={setShowModal} />} />
           {/* <Route path="/products" element={<Products page={page} products={products}
             setFunctions={
               {
@@ -61,7 +61,7 @@ function App() {
           }
         })()} */}
 
-        {
+        {/* {
           (() => {
             switch (productAction) {
               case 'add':
@@ -74,7 +74,9 @@ function App() {
                 return null
             }
           })()
-        }
+          
+        } */}
+        {showModal && <Modal data={selectedProduct} setShowModal={setShowModal} />}
       </div>
     </div >
   );

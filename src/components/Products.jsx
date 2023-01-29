@@ -6,7 +6,7 @@ import Dots from "../svg/Dots";
 import { useState } from "react";
 
 export default function Products(prop) {
-    const { products, selected, newProduct, setAction } = prop;
+    const { products, setSelect, newProduct, setShowModal } = prop;
     // console.log(newProduct);
 
     // const { setFunctions, products, page } = prop;
@@ -23,7 +23,7 @@ export default function Products(prop) {
             <button className="add-product" onClick={() => {
                 console.log("add new product");
                 newProduct(1);
-                setAction('add');
+                setShowModal(true);
                 // setFunctions.newProduct.setNewProduct(1);
                 // setFunctions.action.setProductAction(1);
             }}>+ Add New</button>
@@ -44,12 +44,14 @@ export default function Products(prop) {
                 {/* {[...products].map((product, i) => {
                     return <RowProduct product={product} key={i} selected={setFunctions.selected.setSelectedProduct} action={setFunctions.action.setProductAction} />
                 })} */}
-                {[...products].map((product, i) => {
-                    return <RowProduct product={product} key={i} selected={selected} action={setAction} />
+                {[...products].map((product, i) => { //product
+                    return <RowProduct product={product} key={i} setSelect={setSelect} setShowModal={setShowModal} />
                 })}
 
             </tbody>
 
         </table>
+
+
     </div >
 }
