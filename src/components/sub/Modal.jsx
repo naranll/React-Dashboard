@@ -1,12 +1,10 @@
 import axios from "axios";
-import { useState, useRef } from "react";
+import { useState } from "react";
 import "../../styles/modal.css";
 
 export default function Modal(prop) {
     const { data: product, setShowModal } = prop;
-    // const inputRef = useRef();
-    // console.log(product)
-    const [current, setCurrent] = useState(product);
+
 
     // const submitForm = () => {
     //     //create object 

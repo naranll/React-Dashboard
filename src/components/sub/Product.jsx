@@ -3,16 +3,23 @@ import "../../styles/row.css";
 import "../../styles/dropdown.css";
 import Dots from "../../svg/Dots";
 import Modal from "./Modal";
+import Delete from "./Delete";
 import { useState } from "react"
 
-export default function RowProduct(prop) {
-    const { product, setSelect, action, setShowModal } = prop;
+export default function Product(prop) {
+    const { product, setSelectedProduct, setShowModal, setShowDelete } = prop;
     const [dropShow, setDropShow] = useState(false)
 
     function editBtnHandler() {
-        setShowModal(true)
-        setSelect(product)
+        setShowModal(true);
+        setSelectedProduct(product);
     }
+
+    function deleteBtnHandler() {
+        setShowDelete(true);
+        setSelectedProduct(product);
+    }
+
     return <>
         <tr className="product-row">
             <td className="product-image"> <img src={product.image} /></td>
@@ -24,20 +31,10 @@ export default function RowProduct(prop) {
             <td>
                 <div className="dropdown" style={{ position: "relative" }}>
                     <button className="more dropbtn" onClick={setDropShow}><Dots /></button>
-                    {/*<div className="dropdown-content">
-                        <a onClick={() => {
-                            selected(product);
-                            action('edit');
-                        }}>Edit</a>
 
-                        <a onClick={() => {
-                            selected(product);
-                            action('delete');
-                        }}>Delete</a>
-                    </div> */}
-                    {dropShow && <div style={{ width: "100px", height: "100px", position: "absolute", backgroundColor: "green" }}>
-                        <button onClick={editBtnHandler} style={{ width: "100px" }}>Edit</button>
-                        <button style={{ width: "100px" }}>Delete</button>
+                    {dropShow && <div className="dropdown-content">
+                        <button onClick={editBtnHandler} className="optionBtn">Edit</button>
+                        <button onClick={deleteBtnHandler} className="optionBtn">Delete</button>
                     </div>}
                 </div>
             </td>
@@ -46,3 +43,16 @@ export default function RowProduct(prop) {
     </>
 }
 
+
+//previously used functions
+{/* <div className="dropdown-content">
+        <a onClick={() => {
+            selected(product);
+            action('edit');
+        }}>Edit</a>
+
+        <a onClick={() => {
+            selected(product);
+            action('delete');
+        }}>Delete</a>
+</div> */}

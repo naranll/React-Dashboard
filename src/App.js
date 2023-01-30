@@ -15,8 +15,8 @@ function App() {
   const [products, setProducts] = useState('');
   const [page, setPage] = useState('monitor');
   const [selectedProduct, setSelectedProduct] = useState();
-  const [newProduct, setNewProduct] = useState(0);
   const [showModal, setShowModal] = useState(false);
+  const [showDelete, setShowDelete] = useState(false);
 
   useEffect(() => {
     axios.get("http://localhost:2020/products")
@@ -33,7 +33,7 @@ function App() {
         <SideMenu setPage={setPage} page={page} />
         <Routes>
           <Route path="/" element={<Monitor />} />
-          <Route path="/products" element={<Products products={products} setSelect={setSelectedProduct} newProduct={setNewProduct} setShowModal={setShowModal} />} />
+          <Route path="/products" element={<Products products={products} setSelectedProduct={setSelectedProduct} setShowModal={setShowModal} setShowDelete={setShowDelete} />} />
           {/* <Route path="/products" element={<Products page={page} products={products}
             setFunctions={
               {
@@ -45,21 +45,6 @@ function App() {
           />}
           /> */}
         </Routes>
-
-        {/* {productAction !== 0 ? <Modal product={selectedProduct} action={productAction} /> : ''} */}
-
-        {/* {(() => {
-          switch (productAction) {
-            case 1:
-              return <Add />
-            case 2:
-              return <Edit product={selectedProduct} />
-            case 3:
-              return <Delete product={selectedProduct} />
-            default:
-              return null
-          }
-        })()} */}
 
         {/* {
           (() => {
@@ -77,6 +62,7 @@ function App() {
           
         } */}
         {showModal && <Modal data={selectedProduct} setShowModal={setShowModal} />}
+        {showDelete && <Delete product={selectedProduct} setShowDelete={setShowDelete} />}
       </div>
     </div >
   );
