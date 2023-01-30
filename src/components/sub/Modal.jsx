@@ -21,18 +21,25 @@ export default function Modal(prop) {
 
     const submitHandler = (e) => {
         e.preventDefault();
-        // console.log(e.target.productName.value);
-        const newProduct = {
+        const newObj = {
             name: e.target.productName.value,
             price: e.target.productPrice.value,
             stock: e.target.productStock.value,
             sale: e.target.productSale.value,
             categories: e.target.category.value,
+        };
+        console.log("newProduct:", newObj); 
+        if(product){
+            console.log(product);
+        } else {
+            addNew(newObj);
         }
-        // axios.post("http://localhost:2020/products", newProduct)
-        //     .then((response) => console.log(response))
-        //     .catch((response) => console.log("error posting"))
-        console.log(newProduct);
+    }
+
+    function addNew(newProduct){
+        axios.post("http://localhost:2020/products", newProduct)
+            .then((response) => console.log(response))
+            .catch(() => console.log("error posting from modal")) 
     }
 
     return <div className="modal-container">
@@ -91,10 +98,8 @@ export default function Modal(prop) {
                         </select>
                     </div>
 
-                    <button type="submit">Save changes</button>
+                    <button type="submit" className="submit">Save changes</button>
                 </form>
-
-
             </div>
         </div>)}
 

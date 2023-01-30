@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useState } from "react";
 import "../../styles/modal.css";
 
@@ -7,6 +8,9 @@ export default function Delete(prop) {
     function deleteHandler() {
         console.log("deleted product:", product.id);
         setShowDelete(false);
+        axios.delete("http://localhost:2020/products",product.id)
+        .then((response) => console.log(response))
+        .catch((()=>console.log("error deleting")))
     }
 
     return <div className="modal-container">
