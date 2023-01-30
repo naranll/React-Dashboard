@@ -3,11 +3,9 @@ import Header from "./components/Header";
 import SideMenu from "./components/SideMenu";
 import Products from "./components/Products";
 import Monitor from "./components/Monitor";
-import data from "./util/data";
 import { Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
-// import Add from "./components/sub/Add";
 import Modal from "./components/sub/Modal";
 import Delete from "./components/sub/Delete";
 

@@ -55,4 +55,4 @@ export default function Product(prop) {
             selected(product);
             action('delete');
         }}>Delete</a>
-</div> */}
+ </div> */}
