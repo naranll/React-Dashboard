@@ -19,16 +19,29 @@ export default function Modal(prop) {
         };
         console.log("input newProduct:", newObj);
         if (product) {
-            console.log(product);
+            const editedObj ={
+                id: product.id,
+                ...newObj
+            }
+            editProduct(editedObj);
         } else {
             addNew(newObj);
         }
+    }
+    
+    function editProduct(product){
+        axios.put(`http://localhost:2020/products/${product.id}`, newProduct)
+            .then((response) => {
+                // console.log(response)
+                response && setShowModal(false);
+            })
+            .catch(() => console.log("error editing product"));
     }
 
     function addNew(newProduct) {
         axios.post("http://localhost:2020/products", newProduct)
             .then((response) => {
-                // console.log(response)
+                console.log(response)
                 response && setShowModal(false);
             }
             )
@@ -44,7 +57,6 @@ export default function Modal(prop) {
             </div>
             <div className="modal-body">
                 <form onSubmit={submitHandler}>
-                    {/* <div className="modal-img-container"><img alt={product && product.name} src={product && product.image} /></div> */}
                     <div className="modal-img-container">
                         <input type="image" src={product && product.image} alt={product && product.name} className="productImage" />
                     </div>
@@ -122,54 +134,3 @@ export function NewSpec() {
         </label>
     </div>
 }
-
-
-//previously used
-{/* <form onSubmit={getInput}>
-        <div className="modal-img-container"><img alt={product && product.name} src={product && product.image} /></div>
-                <div className="modal-rows">
-                    <label>
-                        <b>Name</b>
-                        <input type="text" name="productName" defaultValue={product && product.name} ref={inputRef} />
-                    </label>
-                    <label>
-                        <b>Price</b>
-                        <input type="text" name="productPrice" defaultValue={product && product.price} ref={inputRef} />
-                    </label>
-                </div>
-                <div className="modal-rows">
-                   <label>
-                        <b>Stock</b>
-                        <input type="text" name="productStock" defaultValue={product && product.stock} ref={inputRef} />
-                    </label>
-                    <label>
-                        <b>Sale</b>
-                        <input type="text" name="productSale" defaultValue={product && product.sale} ref={inputRef} />
-                    </label>
-                </div>
-                <div> <h4>Specs</h4>
-                    {product ? <div>{product.spec.map((specObject, i) => {
-                        for (let prop in specObject) {
-                            return <div key={i} className="modal-rows"
-                            <label>
-                                    <b>{prop}</b>
-                                    <input type="text" defaultValue={specObject[prop]} ref={inputRef} />
-                            </label>
-                </div>
-                }
-            })}</div> : ''}
-                        <input type="button" value="+Add spec" />
-                    </div>
-
-                    <div>
-                        <h3>Choose category</h3>
-                        <select name="category">
-                            <option>Appliances</option>
-                            <option>Computers & Tablets</option>
-                            <option>Gaming console</option>
-                            <option>Telescope</option>
-                        </select>
-                    </div>
-
-                    <button type="submit">Save changes</button>
-                </form> */}
