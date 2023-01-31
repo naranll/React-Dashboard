@@ -5,8 +5,8 @@ import "../../styles/modal.css";
 export default function Modal(prop) {
     const { data: product, setShowModal } = prop;
     const [showNewSpec, setShowNewSpec] = useState(false);
-    // const [specArray, setSpecArray] = useState([''])
-    const specArray = [];
+    // const specArray = [];
+    const [specArray, setSpecArray] = useState([])
 
     const submitHandler = (e) => {
         e.preventDefault();
@@ -83,14 +83,16 @@ export default function Modal(prop) {
 
                         <div>
                             <h3>New spec</h3>
-                            {showNewSpec && specArray.length > 1 && specArray.map((n, i) => { return <NewSpec key={i} /> })}
+                            {showNewSpec && specArray.map((n, i) => {
+                                return <NewSpec key={i} />
+                            })}
                             {/* {showNewSpec && <NewSpec />} */}
-                            {/* {specArray.length > 1 && specArray.map((n, i) => <NewSpec key={i} />)} */}
                         </div>
 
                         <input type="button" value="+Add spec" className="spec-btn" onClick={() => {
                             setShowNewSpec(true);
-                            specArray.push("el");
+                            // specArray.push("el");
+                            setSpecArray([...specArray, ''])
                             console.log("array", specArray);
                         }} />
                     </div>
@@ -112,7 +114,7 @@ export default function Modal(prop) {
     </div>
 }
 
-function NewSpec() {
+export function NewSpec() {
     return <div className="modal-rows">
         <label className="spec-label">
             <input type="text" placeholder="New Spec name" className="spec-label" />
@@ -120,8 +122,6 @@ function NewSpec() {
         </label>
     </div>
 }
-
-
 
 
 //previously used
