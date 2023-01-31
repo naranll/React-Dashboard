@@ -7,10 +7,10 @@ export default function Delete(prop) {
 
     function deleteHandler() {
         console.log("deleted product:", product.id);
-        setShowDelete(false);
-        axios.delete("http://localhost:2020/products",product.id)
-        .then((response) => console.log(response))
-        .catch((()=>console.log("error deleting")))
+        // setShowDelete(false);
+        axios.delete(`http://localhost:2020/products/${product.id}`)
+            .then((response) => console.log(response))
+            .catch((() => console.log("error from back-end")))
     }
 
     return <div className="modal-container">

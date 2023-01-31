@@ -20,6 +20,7 @@ function App() {
     axios.get("http://localhost:2020/products")
       .then(response => {
         setProducts(response.data);
+        // console.log("set categories", response.data[1])
       })
       .catch(() => console.log("error fetching"))
   }, [])
