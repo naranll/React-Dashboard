@@ -5,21 +5,31 @@ import "../../styles/modal.css";
 export default function Modal(prop) {
     const { data: product, setShowModal } = prop;
     const [showNewSpec, setShowNewSpec] = useState(false);
-    // const specArray = [];
-    const [specArray, setSpecArray] = useState([])
+    const [specNumber, setSpecNumber] = useState([]);
+    //currently not using
+    const [newSpecValues, setNewSpecValues] = useState([]);
 
     const submitHandler = (e) => {
         e.preventDefault();
+        // console.log("new spec", e.target.specName.value);
+        let newSpec = {};
+        newSpec[e.target.specName.value] = e.target.specValue.value;
+        console.log("new spec", newSpec)
+
+        setNewSpecValues([...newSpecValues, { [e.target.specName.value]: e.target.specValue.value }])
+
         const newObj = {
             name: e.target.productName.value,
             price: e.target.productPrice.value,
             stock: e.target.productStock.value,
             sale: e.target.productSale.value,
             category: e.target.category.value,
+            spec: newSpecValues,
         };
         console.log("input newProduct:", newObj);
+
         if (product) {
-            const editedObj ={
+            const editedObj = {
                 id: product.id,
                 ...newObj
             }
@@ -28,11 +38,10 @@ export default function Modal(prop) {
             addNew(newObj);
         }
     }
-    
-    function editProduct(product){
-        axios.put(`http://localhost:2020/products/${product.id}`, newProduct)
+
+    function editProduct(product) {
+        axios.patch(`http://localhost:2020/products/${product.id}`, product)
             .then((response) => {
-                // console.log(response)
                 response && setShowModal(false);
             })
             .catch(() => console.log("error editing product"));
@@ -58,7 +67,8 @@ export default function Modal(prop) {
             <div className="modal-body">
                 <form onSubmit={submitHandler}>
                     <div className="modal-img-container">
-                        <input type="image" src={product && product.image} alt={product && product.name} className="productImage" />
+                        {/* <input type="image" src={product && product.image} alt={product && product.name} className="productImage" /> */}
+                        <input type="text" name="productImage" defaultValue={product && product.image} />
                     </div>
                     <div className="modal-rows">
                         <label>
@@ -95,17 +105,14 @@ export default function Modal(prop) {
 
                         <div>
                             <h3>New spec</h3>
-                            {showNewSpec && specArray.map((n, i) => {
-                                return <NewSpec key={i} />
+                            {showNewSpec && specNumber.map((n, i) => {
+                                return <NewSpec key={i} newSpecValues={newSpecValues} setNewSpecValues={setNewSpecValues} specNumber={specNumber} />
                             })}
-                            {/* {showNewSpec && <NewSpec />} */}
                         </div>
-
                         <input type="button" value="+Add spec" className="spec-btn" onClick={() => {
                             setShowNewSpec(true);
-                            // specArray.push("el");
-                            setSpecArray([...specArray, ''])
-                            console.log("array", specArray);
+                            setSpecNumber([...specNumber, ''])
+                            console.log("how many spec:", specNumber.length);
                         }} />
                     </div>
 
@@ -118,7 +125,6 @@ export default function Modal(prop) {
                             <option value="Telescope">Telescope</option>
                         </select>
                     </div>
-
                     <button type="submit" className="submit">Save changes</button>
                 </form>
             </div>
@@ -126,11 +132,13 @@ export default function Modal(prop) {
     </div>
 }
 
-export function NewSpec() {
+export function NewSpec(prop) {
+    const { newSpecValues, setNewSpecValues, specNumber } = prop;
+
     return <div className="modal-rows">
         <label className="spec-label">
-            <input type="text" placeholder="New Spec name" className="spec-label" />
-            <input type="text" placeholder="New Spec" />
+            <input type="text" name={'name' + { specNumber }} placeholder="New Spec name" className="spec-label" />
+            <input type="text" name="specValue" placeholder="New Spec" />
         </label>
     </div>
 }
