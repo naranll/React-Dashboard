@@ -1,6 +1,6 @@
 import "../styles/products.css";
 import Modal from "./sub/Modal";
-import Add from "./sub/Add";
+// import Add from "./sub/Add";
 import Product from "./sub/Product";
 import Dots from "../svg/Dots";
 import { useState } from "react";

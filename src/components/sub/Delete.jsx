@@ -10,7 +10,7 @@ export default function Delete(prop) {
         // setShowDelete(false);
         axios.delete(`http://localhost:2020/products/${product.id}`)
             .then((response) => console.log(response))
-            .catch((() => console.log("error from back-end")))
+            .catch((() => console.log("error from back-end")));
     }
 
     return <div className="modal-container">
