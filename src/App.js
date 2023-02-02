@@ -31,34 +31,12 @@ function App() {
         <SideMenu setPage={setPage} page={page} />
         <Routes>
           <Route path="/" element={<Monitor />} />
-          <Route path="/products" element={<Products products={products} setSelectedProduct={setSelectedProduct} setShowModal={setShowModal} setShowDelete={setShowDelete} />} />
-          {/* <Route path="/products" element={<Products page={page} products={products}
-            setFunctions={
-              {
-                setPage: { setPage },
-                selected: { setSelectedProduct },
-                newProduct: { setNewProduct },
-                action: { setProductAction }
-              }}
-          />}
-          /> */}
+          <Route path="/products" element={
+            <Products products={products} setSelectedProduct={setSelectedProduct}
+              setShowModal={setShowModal} setShowDelete={setShowDelete} />
+          } />
         </Routes>
 
-        {/* {
-          (() => {
-            switch (productAction) {
-              case 'add':
-                return <Modal action="add" setAction={setProductAction} />
-              case 'edit':
-                return <Modal product={selectedProduct} action="edit" setAction={setProductAction} />
-              case 'delete':
-                return <Delete product={selectedProduct} setAction={setProductAction} />
-              default:
-                return null
-            }
-          })()
-          
-        } */}
         {showModal && <Modal data={selectedProduct} setShowModal={setShowModal} />}
         {showDelete && <Delete product={selectedProduct} setShowDelete={setShowDelete} />}
       </div>
@@ -67,3 +45,34 @@ function App() {
 }
 
 export default App;
+
+
+//previously used 
+
+
+/* <Route path="/products" element={<Products page={page} products={products}
+            setFunctions={
+              {
+                setPage: { setPage },
+                selected: { setSelectedProduct },
+                newProduct: { setNewProduct },
+                action: { setProductAction }
+              }}
+          />}
+          /> */
+
+/* {
+    (() => {
+      switch (productAction) {
+        case 'add':
+          return <Modal action="add" setAction={setProductAction} />
+          case 'edit':
+          return <Modal product={selectedProduct} action="edit" setAction={setProductAction} />
+          case 'delete':
+          return <Delete product={selectedProduct} setAction={setProductAction} />
+          default:
+          return null
+      }
+  })()
+          
+} */

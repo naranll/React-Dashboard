@@ -7,16 +7,20 @@ export default function Modal(prop) {
     const [showNewSpec, setShowNewSpec] = useState(false);
     const [specNumber, setSpecNumber] = useState([]);
     //currently not using
-    const [newSpecValues, setNewSpecValues] = useState([]);
+    const [newSpecProperty, setNewSpecProperty] = useState([]);
 
     const submitHandler = (e) => {
         e.preventDefault();
-        // console.log("new spec", e.target.specName.value);
-        let newSpec = {};
-        newSpec[e.target.specName.value] = e.target.specValue.value;
-        console.log("new spec", newSpec)
 
-        setNewSpecValues([...newSpecValues, { [e.target.specName.value]: e.target.specValue.value }])
+        console.log("newspec:", specNumber);
+
+        if (showNewSpec.length >= 1) {
+            let newSpec = {};
+
+            newSpec[e.target.specName.value] = e.target.specValue.value;
+            console.log("new spec", newSpec)
+            setNewSpecProperty([...newSpecProperty, { [e.target.specName.value]: e.target.specValue.value }])
+        }
 
         const newObj = {
             name: e.target.productName.value,
@@ -24,7 +28,7 @@ export default function Modal(prop) {
             stock: e.target.productStock.value,
             sale: e.target.productSale.value,
             category: e.target.category.value,
-            spec: newSpecValues,
+            spec: showNewSpec ? newSpecProperty : product.spec,
         };
         console.log("input newProduct:", newObj);
 
@@ -106,13 +110,13 @@ export default function Modal(prop) {
                         <div>
                             <h3>New spec</h3>
                             {showNewSpec && specNumber.map((n, i) => {
-                                return <NewSpec key={i} newSpecValues={newSpecValues} setNewSpecValues={setNewSpecValues} specNumber={specNumber} />
+                                return <NewSpec key={i} specNumber={specNumber.length} />
                             })}
                         </div>
                         <input type="button" value="+Add spec" className="spec-btn" onClick={() => {
                             setShowNewSpec(true);
                             setSpecNumber([...specNumber, ''])
-                            console.log("how many spec:", specNumber.length);
+                            // console.log("how many spec:", specNumber.length);
                         }} />
                     </div>
 
@@ -133,12 +137,14 @@ export default function Modal(prop) {
 }
 
 export function NewSpec(prop) {
-    const { newSpecValues, setNewSpecValues, specNumber } = prop;
+    const { specNumber } = prop;
 
     return <div className="modal-rows">
         <label className="spec-label">
-            <input type="text" name={'name' + { specNumber }} placeholder="New Spec name" className="spec-label" />
-            <input type="text" name="specValue" placeholder="New Spec" />
+            <input type="text" name={`specName`} placeholder="New Spec name" className="spec-label" />
+            <input type="text" name={`specValue`} placeholder="New Spec" />
+            {/* <input type="text" name={`name${specNumber}`} placeholder="New Spec name" className="spec-label" />
+            <input type="text" name={`value${specNumber}`} placeholder="New Spec" /> */}
         </label>
     </div>
 }
