@@ -80,7 +80,7 @@ export default function Modal(prop) {
                             <input type="text" name="productPrice" defaultValue={product && product.price} />
                         </label>
                     </div>
-                    {/* <div className="modal-rows"> */}
+                    <div className="modal-rows">
                         <label>
                             <b>Stock</b>
                             <input type="text" name="productStock" defaultValue={product && product.stock} />
@@ -89,7 +89,7 @@ export default function Modal(prop) {
                             <b>Sale</b>
                             <input type="text" name="productSale" defaultValue={product && product.sale} />
                         </label>
-                    {/* </div> */}
+                    </div>
 
                     <div className="spec-container"> <h4>Specs</h4>
                         {product && product.spec && <div>{product.spec.map((specObject, i) => {
