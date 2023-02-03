@@ -8,6 +8,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Modal from "./components/sub/Modal";
 import Delete from "./components/sub/Delete";
+import AddSpec from "./components/sub/AddSpec";
 
 function App() {
   const [products, setProducts] = useState('');
@@ -15,6 +16,7 @@ function App() {
   const [selectedProduct, setSelectedProduct] = useState();
   const [showModal, setShowModal] = useState(false);
   const [showDelete, setShowDelete] = useState(false);
+  const [showAddSpec, setShowAddSpec] = useState(false);
 
   useEffect(() => {
     axios.get("http://localhost:2020/products")
@@ -37,8 +39,9 @@ function App() {
           } />
         </Routes>
 
-        {showModal && <Modal data={selectedProduct} setShowModal={setShowModal} />}
+        {showModal && <Modal data={selectedProduct} setShowModal={setShowModal} setShowAddSpec={setShowAddSpec} />}
         {showDelete && <Delete product={selectedProduct} setShowDelete={setShowDelete} />}
+        {showAddSpec && <AddSpec />}
       </div>
     </div >
   );
