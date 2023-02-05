@@ -8,11 +8,11 @@
 //             </label>
 //         </form>
 //     </div>
-// }
+// // }
 
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
-import Form from "react-bootstrap/Form";
+// import Button from 'react-bootstrap/Button';
+// import Modal from 'react-bootstrap/Modal';
+// import Form from "react-bootstrap/Form";
 
 export default function AddSpec() {
     console.log("new spec showing");
@@ -21,7 +21,7 @@ export default function AddSpec() {
             className="modal show"
             style={{ display: 'block', position: 'initial' }}
         >
-            <Modal.Dialog>
+            {/* <Modal.Dialog>
                 <Modal.Header closeButton>
                     <Modal.Title>Add new spec</Modal.Title>
                 </Modal.Header>
@@ -41,7 +41,7 @@ export default function AddSpec() {
                     <Button variant="secondary">Close</Button>
                     <Button variant="primary">Save changes</Button>
                 </Modal.Footer>
-            </Modal.Dialog>
+            </Modal.Dialog> */}
         </div>
     );
 }
