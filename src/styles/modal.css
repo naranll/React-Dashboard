@@ -3,12 +3,20 @@
   border-radius: 0px;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 25px;
   padding: 16px;
+  height: 75px;
+  position: relative;
 }
 
 .modal-body {
   padding: 50px 100px;
+  border: 1px solid black;
+  height: 600px;
+  /* height: 80%; */
+  overflow-y: scroll;
+  font-size: 16px;
 }
 
 .modal-footer {
@@ -44,7 +52,6 @@
   }
   to {
     top: 0;
-    /* right: 10px; */
     opacity: 1;
   }
 }
@@ -54,6 +61,8 @@
   float: right;
   font-size: 28px;
   font-weight: bold;
+  position: absolute;
+  left: 30px
 }
 
 .close:hover,
@@ -63,37 +72,45 @@
   cursor: pointer;
 }
 
+.modal-container form{
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
 .modal-img-container {
-  height: 200px;
   width: 700px;
   padding: 20px;
   display: flex;
-  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
   border: 1px solid #e7e4e4;
   border-radius: 5px;
 }
-.modal-img-container .productImage {
+
+.modal-image-view{
   height: 100px;
   width: 100px;
+  object-fit: scale-down;
+}
+
+.modal-img-container .productImage {
+  height: 100px;
+  width: 300px;
   object-fit: scale-down;
   border: 1px solid #888;
 }
 
-.modal-container form {
-  /* display: flex; */
-  flex-direction: column;
-}
-
 .modal-rows {
-  /* border: 1px solid red; */
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
   width: 714px;
-  gap: 20px;
+  height: 60px;
+  gap: 24px;
 }
 
 .modal-container label {
-  /* border-color: 1px solid red; */
   width: 340px;
   display: flex;
   flex-direction: column;
@@ -101,15 +118,16 @@
 
 .modal-container input {
   width: 340px;
-  height: 42px;
+  height: 30px;
+  border: 1px solid #D9D9D9;
 }
 
 h4 {
-  margin: 10px;
+  margin: 0 10px;
 }
 
 .spec-container {
-  border: 2px solid black;
+  width: 714px;
 }
 
 .newSpec {
@@ -122,6 +140,16 @@ h4 {
   flex-direction: row !important;
 }
 
-.modal-container .spec-btn {
-  width: 100px;
+.spec-add-btn {
+  width: 240px;
+  background-color: #F1EDED;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
+.spec-btn{
+  background-color: inherit;
+  border: none !important;
+  width: 100px !important;
+} 

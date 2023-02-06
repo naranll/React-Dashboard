@@ -1,13 +1,13 @@
 .product-row {
   display: flex;
   border-bottom: 1px solid #eaeaea !important;
+  width: 100%;
 }
 
 td {
   background-color: #fff;
   padding: 0px 25px;
-  width: 150px;
-  border: 1px solid #eaeaea;
+  width: 120px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -19,13 +19,17 @@ td {
   object-fit: scale-down;
 }
 
-.category {
+.product-category{
+  width: 200px;
+}
+
+.category{
   margin: 0;
-  width: 110px;
+  width: 150px;
   color: #fff;
   background-color: #003585;
   border-radius: 5px;
-  padding: 5px;
+  padding: 3px;
   text-align: center;
 }
 
@@ -33,3 +37,7 @@ td {
   background-color: white;
   border: none;
 }
+
+/* .product-name{
+  width: 205px;
+} */

@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import AddIcon from "../../svg/AddIcon";
 import "../../styles/modal.css";
 
 export default function Modal(prop) {
@@ -71,14 +72,14 @@ export default function Modal(prop) {
                 <div className="modal-content">
                     <div className="modal-header">
                         <span className="close" onClick={() => setShowModal(false)}>
-                            <h1>&times;</h1>
+                            <h6 className="cancelIcon">&times;</h6>
                         </span>
-                        <h2>{product && product.name}</h2>
+                        <h3>{product && product.name}</h3>
                     </div>
                     <div className="modal-body">
                         <form onSubmit={submitHandler}>
                             <div className="modal-img-container">
-                                {/* <input type="image" src={product && product.image} alt={product && product.name} className="productImage" /> */}
+                                <img src={product && product.image} className="modal-image-view" />
                                 <input
                                     type="text"
                                     name="productImage"
@@ -122,29 +123,27 @@ export default function Modal(prop) {
                                 </label>
                             </div>
 
-                            <div className="spec-container">
-                                <h4>Specs</h4>
-                                {product && product.spec && (
-                                    <div>
-                                        {product.spec.map((specObject, i) => {
-                                            for (let prop in specObject) {
-                                                return (
-                                                    <div key={i} className="modal-rows">
-                                                        <label>
-                                                            <b>{prop}</b>
-                                                            <input
-                                                                type="text"
-                                                                defaultValue={specObject[prop]}
-                                                            />
-                                                        </label>
-                                                    </div>
-                                                );
-                                            }
-                                        })}
-                                    </div>
-                                )}
+                            {/* <div className="spec-container"> */}
+                            <h4>Specs</h4>
+                            {product && product.spec && (
+                                <div className="modal-rows">
+                                    {product.spec.map((specObject, i) => {
+                                        for (let prop in specObject) {
+                                            return (
+                                                <label key={i}>
+                                                    <b>{prop}</b>
+                                                    <input
+                                                        type="text"
+                                                        defaultValue={specObject[prop]}
+                                                    />
+                                                </label>
+                                            );
+                                        }
+                                    })}
+                                </div>
+                            )}
 
-                                {/* <div>
+                            {/* <div>
                                     <h3>New spec</h3>
                                     {showNewSpec &&
                                         specNumber.map((n, i) => {
@@ -152,18 +151,21 @@ export default function Modal(prop) {
                                             // return <NewSpec key={i} setNewSpecName={setNewSpecName} setNewSpecProperty={setNewSpecProperty} />;
                                         })}
                                 </div> */}
+                            <div className="spec-add-btn" onClick={() => {
+                                    // setShowNewSpec(true);
+                                    setSpecNumber([...specNumber, ""]);
+                                    // getSpecInput();
+                                    setShowAddSpec(true);
+                                }}>
+                                <span><AddIcon color={"black"}/></span>
                                 <input
-                                    type="button"
-                                    value="+Add spec"
-                                    className="spec-btn"
-                                    onClick={() => {
-                                        // setShowNewSpec(true);
-                                        setSpecNumber([...specNumber, ""]);
-                                        // getSpecInput();
-                                        setShowAddSpec(true);
-                                    }}
-                                />
-                            </div>
+                                type="button"
+                                value="Add spec"
+                                className="spec-btn"  
+                            />
+                                </div>
+                            
+                            {/* </div> */}
 
                             <div>
                                 <h3>Choose category</h3>

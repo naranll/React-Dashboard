@@ -1,5 +1,5 @@
 // import Edit from "./Edit";
-import "../../styles/row.css";
+import "../../styles/product.css";
 import "../../styles/dropdown.css";
 import Dots from "../../svg/Dots";
 import Modal from "./Modal";
@@ -23,11 +23,11 @@ export default function Product(prop) {
     return <>
         <tr className="product-row">
             <td className="product-image"> <img src={product.image} /></td>
-            <td>{product.name}</td>
+            <td className="product-name">{product.name}</td>
             <td>${product.price}</td>
             <td>{product.stock}</td>
             <td>{product.sale}%</td>
-            <td><p className="category">{product.category}</p></td>
+            <td className="product-category"><p className="category">{product.category}</p></td>
             <td>
                 <div className="dropdown" style={{ position: "relative" }}>
                     <button className="more dropbtn" onClick={setDropShow}><Dots /></button>

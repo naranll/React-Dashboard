@@ -1,3 +1,3 @@
 export default function Monitor() {
-    return <div>monitor</div>
+    return <div className="monitor-page main">monitor</div>
 }

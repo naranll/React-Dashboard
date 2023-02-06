@@ -11,51 +11,67 @@ import Delete from "./components/sub/Delete";
 import AddSpec from "./components/sub/AddSpec";
 
 function App() {
-  const [products, setProducts] = useState('');
-  const [page, setPage] = useState('monitor');
+  const [products, setProducts] = useState("");
+  const [page, setPage] = useState("monitor");
   const [selectedProduct, setSelectedProduct] = useState();
   const [showModal, setShowModal] = useState(false);
   const [showDelete, setShowDelete] = useState(false);
   const [showAddSpec, setShowAddSpec] = useState(false);
 
   useEffect(() => {
-    axios.get("http://localhost:2020/products")
-      .then(response => {
+    axios
+      .get("http://localhost:2020/products")
+      .then((response) => {
         setProducts(response.data);
       })
-      .catch(() => console.log("error fetching"))
-  }, [])
+      .catch(() => console.log("error fetching"));
+  }, []);
 
   return (
     <div className="App">
       <Header />
-      <div className="main">
+      <div className="body">
         <SideMenu setPage={setPage} page={page} />
-        <Routes>
-          <Route path="/monitor" element={<Monitor />} />
-          <Route path="/products" element={
-            <Products products={products} setSelectedProduct={setSelectedProduct}
-              setShowModal={setShowModal} setShowDelete={setShowDelete} />
-          } />
-          <Route path="/orders" element={<Monitor />} />
-          <Route path="/users" element={<Monitor />} />
-          <Route path="/moderator" element={<Monitor />} />
-          <Route path="/settings" element={<Monitor />} />
-        </Routes>
+        <div className="main">
+          <Routes>
+            <Route path="/monitor" element={<Monitor />} />
+            <Route
+              path="/products"
+              element={
+                <Products
+                  products={products}
+                  setSelectedProduct={setSelectedProduct}
+                  setShowModal={setShowModal}
+                  setShowDelete={setShowDelete}
+                />
+              }
+            />
+            <Route path="/orders" element={<Monitor />} />
+            <Route path="/users" element={<Monitor />} />
+            <Route path="/moderator" element={<Monitor />} />
+            <Route path="/settings" element={<Monitor />} />
+          </Routes>
+        </div>
 
-        {showModal && <Modal data={selectedProduct} setShowModal={setShowModal} setShowAddSpec={setShowAddSpec} />}
-        {showDelete && <Delete product={selectedProduct} setShowDelete={setShowDelete} />}
+        {showModal && (
+          <Modal
+            data={selectedProduct}
+            setShowModal={setShowModal}
+            setShowAddSpec={setShowAddSpec}
+          />
+        )}
+        {showDelete && (
+          <Delete product={selectedProduct} setShowDelete={setShowDelete} />
+        )}
         {showAddSpec && <AddSpec />}
       </div>
-    </div >
+    </div>
   );
 }
 
 export default App;
 
-
-//previously used 
-
+//previously used
 
 /* <Route path="/products" element={<Products page={page} products={products}
             setFunctions={

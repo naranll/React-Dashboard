@@ -3,16 +3,22 @@
 }
 
 .App {
+  margin: auto;
   max-width: 1400px;
   width: 100%;
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
-  /* align-items: center; */
+  align-items: center;
 }
 
-.main {
+.body {
   display: flex;
-  background-color: #e0e0e0;
-  position: relative;
+  max-width: 1200px;
+  width: inherit;
+}
+
+.main{
+  padding: 24px 70px;
+  
+  background-color: #f5f5f5;
 }
