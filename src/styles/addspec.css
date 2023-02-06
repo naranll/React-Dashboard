@@ -1,0 +1,32 @@
+.addspec-container {
+  top: 0;
+  left: 0;
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+}
+
+.addspec-content {
+  width: 482px;
+  height: 264px;
+  top: 50px;
+  margin: auto;
+  background-color: #fcfcfc;
+}
+
+.addspec-body {
+  /* display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center; */
+}
+
+.addspec-body form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }

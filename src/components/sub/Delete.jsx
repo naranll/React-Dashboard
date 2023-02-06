@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import "../../styles/modal.css";
+import "../../styles/delete.css";
 
 export default function Delete(prop) {
     const { product, setShowDelete } = prop;
@@ -13,15 +14,14 @@ export default function Delete(prop) {
             .catch((() => console.log("error from back-end")));
     }
 
-    return <div className="modal-container">
-        <div className="modal-content">
-            <div className="modal-header">
-                <span className="close" onClick={() => setShowDelete(false)}>&times;</span>
-                <h2>Are you sure you wanna delete product: {product.id}?</h2>
-            </div>
-            <div className="modal-body">
-                <button onClick={deleteHandler}>YES</button>
-                <button onClick={() => setShowDelete(false)}>Cancel</button>
+    return <div className="delete-container">
+        <div className="delete-content">
+            <div className="delete-body">
+            <p>Are you sure you wanna delete product: {product.id}?</p>
+                <div className="modal-row">
+                    <button onClick={deleteHandler} className="yes-btn">YES</button>
+                    <button onClick={() => setShowDelete(false)} className="cancel-btn">Cancel</button>
+                </div>
             </div>
         </div>
     </div>

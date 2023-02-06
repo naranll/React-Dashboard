@@ -1,0 +1,64 @@
+.delete-container {
+  top: 0;
+  left: 0;
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+}
+
+.delete-content {
+  width: 482px;
+  height: 264px;
+  top: 50px;
+  margin: auto;
+  background-color: #fcfcfc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.delete-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+.delete-body p {
+  font-size: 20px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.delete-body .modal-row {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.delete-body .modal-row button {
+  width: 40%;
+  height: 30px;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+}
+
+.yes-btn {
+  background-color: #003585;
+  color: #fff;
+}
+
+.cancel-btn {
+  background-color: #d2d2d2;
+  color: #fff;
+}
+
+
+.cancel-btn:active {
+  background-color: red;
+}

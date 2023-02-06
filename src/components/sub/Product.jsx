@@ -27,7 +27,7 @@ export default function Product(prop) {
             <td>${product.price}</td>
             <td>{product.stock}</td>
             <td>{product.sale}%</td>
-            <td className="product-category"><p className="category">{product.category}</p></td>
+            <td className="product-category"><p>{product.category}</p></td>
             <td>
                 <div className="dropdown" style={{ position: "relative" }}>
                     <button className="more dropbtn" onClick={setDropShow}><Dots /></button>

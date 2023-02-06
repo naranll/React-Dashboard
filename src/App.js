@@ -2,7 +2,7 @@ import "./styles/app.css";
 import Header from "./components/Header";
 import SideMenu from "./components/SideMenu";
 import Products from "./components/Products";
-import Monitor from "./components/Monitor";
+import Monitor from "./pages/Monitor";
 import { Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -63,7 +63,7 @@ function App() {
         {showDelete && (
           <Delete product={selectedProduct} setShowDelete={setShowDelete} />
         )}
-        {showAddSpec && <AddSpec />}
+        {showAddSpec && <AddSpec setShowAddSpec={setShowAddSpec}/>}
       </div>
     </div>
   );
