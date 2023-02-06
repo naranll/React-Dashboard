@@ -1,3 +1,3 @@
 export default function Monitor() {
-    return <div></div>
+    return <div>monitor</div>
 }

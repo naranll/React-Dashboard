@@ -32,11 +32,15 @@ function App() {
       <div className="main">
         <SideMenu setPage={setPage} page={page} />
         <Routes>
-          <Route path="/" element={<Monitor />} />
+          <Route path="/monitor" element={<Monitor />} />
           <Route path="/products" element={
             <Products products={products} setSelectedProduct={setSelectedProduct}
               setShowModal={setShowModal} setShowDelete={setShowDelete} />
           } />
+          <Route path="/orders" element={<Monitor />} />
+          <Route path="/users" element={<Monitor />} />
+          <Route path="/moderator" element={<Monitor />} />
+          <Route path="/settings" element={<Monitor />} />
         </Routes>
 
         {showModal && <Modal data={selectedProduct} setShowModal={setShowModal} setShowAddSpec={setShowAddSpec} />}
