@@ -3,7 +3,6 @@ import "../../styles/addspec.css";
 
 export default function AddSpec({setShowAddSpec}) {
 
-
     console.log("new spec modal showing");
 
     function specAddHandler(e) {
