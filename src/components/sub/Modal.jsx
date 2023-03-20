@@ -23,10 +23,15 @@ export default function Modal(prop) {
     return newSpecs;
   }
 
+  function imageChangeHandler(e) {
+    console.log(e.target.files[0])
+  }
+
   const submitHandler = (e) => {
     e.preventDefault();
 
     const newObj = {
+      // image: e.target.productImage.file,
       name: e.target.productName.value,
       price: e.target.productPrice.value,
       stock: e.target.productStock.value,
@@ -78,14 +83,15 @@ export default function Modal(prop) {
         <div className="modal-body">
           <form onSubmit={submitHandler}>
             <div className="modal-img-container">
-              <img
+              {/* <img
                 src={product && product.image}
                 className="modal-image-view"
-              />
+              /> */}
               <input
-                type="text"
+                type="file"
                 name="productImage"
                 defaultValue={product && product.image}
+                onChange={imageChangeHandler}
               />
             </div>
             <div className="modal-rows">
